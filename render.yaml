@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: iot-telemetry-hub
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    disk:
+      name: telemetry-data
+      mountPath: /app/data
+      sizeGB: 1
